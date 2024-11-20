@@ -1,0 +1,38 @@
+{
+  "name": "focus_backend",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node --env-file .env dist/index.js",
+    "build": "tsc",
+    "watch": "tsc -watch",
+    "dev": "concurrently \" npm run watch \"  \" nodemon --env-file .env dist/index.js \" ",
+    "db": "concurrently \" drizzle-kit generate \"  \" drizzle-kit migrate \" "
+  },
+  "keywords": [
+    "saas"
+  ],
+  "author": "vnuny",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.3",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/pg": "^8.11.10",
+    "concurrently": "^9.1.0",
+    "drizzle-kit": "^0.28.1",
+    "nodemon": "^3.1.7",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
