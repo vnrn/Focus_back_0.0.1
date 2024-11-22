@@ -1,7 +1,7 @@
 import { index, text, timestamp, uuid } from "drizzle-orm/pg-core";
-import Focus from "../schema";
+import Focus from "../../schema";
 import { subscriptionsTable } from "./subscriptions";
-import { SubscriptionsEventsNamesEnum } from "../db_types/types";
+import { SubscriptionsEventsNamesEnum } from "../../db_types/types";
 import { sql } from "drizzle-orm";
 
 export const subscriptionsEventsTable = Focus.table(

@@ -37,7 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const connect_1 = __importDefault(require("./db/connect"));
-const user_1 = __importDefault(require("./db/schema/user/user"));
+const user_1 = __importDefault(require("./db/schema/Focus/user/user"));
 const connect_2 = __importDefault(require("./redis/connect"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
@@ -70,6 +70,10 @@ app.get("/status", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 }));
 app.use("/auth", auth_1.default);
+app.use((err, req, res, next) => {
+    console.error("Unhandled error:", err);
+    res.status(500).json({ message: "Something went wrong!" });
+});
 mainServer.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });

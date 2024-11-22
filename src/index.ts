@@ -1,6 +1,12 @@
-import express, { Router } from "express";
+import express, {
+  ErrorRequestHandler,
+  NextFunction,
+  Request,
+  Response,
+  Router
+} from "express";
 import db from "./db/connect";
-import usersTable from "./db/schema/user/user";
+import usersTable from "./db/schema/Focus/user/user";
 import Redis from "./redis/connect";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -40,7 +46,17 @@ app.get("/status", async (req, res) => {
 });
 
 app.use("/auth", AuthRouter);
-
+app.use(
+  (
+    err: ErrorRequestHandler,
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    console.error("Unhandled error:", err);
+    res.status(500).json({ message: "Something went wrong!" });
+  }
+);
 mainServer.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

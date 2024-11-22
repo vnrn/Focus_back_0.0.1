@@ -5,5 +5,8 @@ require("dotenv/config");
 const redisUrl = process.env.REDIS_URL;
 if (!redisUrl)
     throw new Error("REDIS_URL is not defined");
-const Redis = new ioredis_1.Redis(`${redisUrl}/0`);
+console.log(redisUrl);
+const Redis = new ioredis_1.Redis(`${redisUrl}/0`, {
+    lazyConnect: true
+});
 exports.default = Redis;

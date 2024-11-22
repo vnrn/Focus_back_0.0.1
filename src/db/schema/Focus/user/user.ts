@@ -1,6 +1,6 @@
 import { uuid, varchar, text, timestamp, index } from "drizzle-orm/pg-core";
-import Focus from "../schema";
-import { ProviderEnum } from "../db_types/types";
+import Focus from "../../schema";
+import { ProviderEnum } from "../../db_types/types";
 import { sql } from "drizzle-orm";
 
 export const usersTable = Focus.table(

@@ -1,4 +1,4 @@
-import Focus from "../schema";
+import Focus from "../../schema";
 import { index, integer, uuid, varchar } from "drizzle-orm/pg-core";
 import { usersTable } from "../user/user";
 import { sql } from "drizzle-orm";

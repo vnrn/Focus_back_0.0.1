@@ -1,10 +1,10 @@
 import { index, timestamp, uuid } from "drizzle-orm/pg-core";
-import Focus from "../schema";
+import Focus from "../../schema";
 import { usersTable } from "../user/user";
 import { sql } from "drizzle-orm";
 
-export const paymentInfoTable = Focus.table(
-  "payment_info",
+export const trailsTable = Focus.table(
+  "trails",
   {
     id: uuid("id")
       .primaryKey()
@@ -12,10 +12,12 @@ export const paymentInfoTable = Focus.table(
       .default(sql`gen_random_uuid()`)
       .notNull(),
     userId: uuid("user_id")
-      .references(() => usersTable.id, { onDelete: "cascade" })
-      .notNull()
-      .unique(),
-    stripeCustomerId: uuid("stripe_customer_id").notNull(),
+      .unique()
+      .references(() => usersTable.id)
+      .notNull(),
+    startedAt: timestamp("started_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
       () => new Date()
@@ -23,12 +25,9 @@ export const paymentInfoTable = Focus.table(
   },
   (table) => {
     return {
-      userIdIndex: index("user_id_index_on_payment_info").on(table.userId),
-      stripeCustomerIdIndex: index(
-        "stripe_customer_id_index_on_payment_info"
-      ).on(table.stripeCustomerId)
+      userIdIndex: index("user_id_index_on_trails").on(table.userId)
     };
   }
 );
 
-export default paymentInfoTable;
+export default trailsTable;

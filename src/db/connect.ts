@@ -1,6 +1,7 @@
 import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 import * as Schema from "./schema";
+import "dotenv/config";
 
 const pool = new Pool({
   connectionString: process.env.DB_URL
@@ -15,6 +16,7 @@ connection
   })
   .catch((err) => {
     throw new Error(err);
+    console.log("Faild to connect to database");
   });
 
 export default db;

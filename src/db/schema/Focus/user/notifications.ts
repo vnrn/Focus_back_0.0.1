@@ -1,7 +1,7 @@
 import { boolean, index, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import Focus from "../schema";
+import Focus from "../../schema";
 import { usersTable } from "./user";
-import { LinkTargetEnum } from "../db_types/types";
+import { LinkTargetEnum } from "../../db_types/types";
 import { sql } from "drizzle-orm";
 
 export const notificationsTable = Focus.table(

@@ -1,7 +1,7 @@
 import { index, text, timestamp, uuid } from "drizzle-orm/pg-core";
-import Focus from "../schema";
+import Focus from "../../schema";
 import { usersTable } from "../user/user";
-import { subscriptionStatusEnum } from "../db_types/types";
+import { subscriptionStatusEnum } from "../../db_types/types";
 import { sql } from "drizzle-orm";
 
 export const subscriptionsTable = Focus.table(

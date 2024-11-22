@@ -1,7 +1,7 @@
 import { boolean, index, uuid } from "drizzle-orm/pg-core";
-import Focus from "../schema";
+import Focus from "../../schema";
 import { usersTable } from "./user";
-import { ThemeEnum } from "../db_types/types";
+import { ThemeEnum } from "../../db_types/types";
 import { sql } from "drizzle-orm";
 
 export const settingsTable = Focus.table(

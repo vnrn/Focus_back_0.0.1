@@ -1,15 +1,19 @@
 export { default as Focus } from "./schema";
+export { default as Analytics } from "./schema";
 
-export { default as User } from "./user/user";
-export { default as Settings } from "./user/settings";
-export { default as Profiles } from "./user/profiles";
-export { default as Notifications } from "./user/notifications";
+export { default as User } from "./Focus/user/user";
+export { default as Settings } from "./Focus/user/settings";
+export { default as Profiles } from "./Focus/user/profiles";
+export { default as Notifications } from "./Focus/user/notifications";
 
-export { default as OneTimePayment } from "./payment/oneTimePayment";
-export { default as Trails } from "./payment/trails";
-export { default as PaymentInfo } from "./payment/paymentInfo";
-export { default as Subscriptions } from "./payment/subscriptions";
-export { default as SubscriptionsEvents } from "./payment/subscriptionsEvents";
+export { default as OneTimePayment } from "./Focus/payment/oneTimePayment";
+export { default as Trails } from "./Focus/payment/trails";
+export { default as PaymentInfo } from "./Focus/payment/paymentInfo";
+export { default as Subscriptions } from "./Focus/payment/subscriptions";
+export { default as SubscriptionsEvents } from "./Focus/payment/subscriptionsEvents";
+
+//analytics
+export { default as userSignupSourcesTable } from "./Analytics/signupSources";
 
 //types
 export { ProviderEnum } from "./db_types/types";

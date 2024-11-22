@@ -1,7 +1,7 @@
 import { index, integer, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import Focus from "../schema";
+import Focus from "../../schema";
 import { usersTable } from "./user";
-import { GenderEnum, ProviderEnum } from "../db_types/types";
+import { GenderEnum, ProviderEnum } from "../../db_types/types";
 import { sql } from "drizzle-orm";
 
 export const profilesTable = Focus.table(
@@ -16,7 +16,7 @@ export const profilesTable = Focus.table(
       .references(() => usersTable.id)
       .notNull()
       .unique(),
-    name: varchar("name", { length: 100 }).notNull(),
+    name: varchar("name", { length: 100 }),
     bio: varchar("bio", { length: 255 }),
     avatarUrl: varchar("avatar_url", { length: 255 }),
     selectedAvatar: ProviderEnum("selected_avatar").default("LOCAL").notNull(),
