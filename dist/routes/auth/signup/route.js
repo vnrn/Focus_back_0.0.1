@@ -19,7 +19,7 @@ const drizzle_orm_1 = require("drizzle-orm");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const Tokens_1 = require("../../../lib/Tokens");
 const SignupQueue_1 = __importDefault(require("../../../Queues/SignupQueue"));
-function SignupHandler(req, res) {
+function SignupHandler(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         const { username, email, password, reffer: Reffer } = req.body;
         const IPP = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "";
@@ -98,8 +98,8 @@ function SignupHandler(req, res) {
             return;
         }
         catch (error) {
-            throw new Error(error);
-            res.status(500).json({ error });
+            console.log(`error while signing up: ${error}`);
+            next(error);
         }
     });
 }

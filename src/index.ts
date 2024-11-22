@@ -46,7 +46,7 @@ app.get("/status", async (req, res) => {
 });
 
 app.use("/auth", AuthRouter);
-app.use(
+mainServer.use(
   (
     err: ErrorRequestHandler,
     req: Request,

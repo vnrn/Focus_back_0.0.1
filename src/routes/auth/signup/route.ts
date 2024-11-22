@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import db from "../../../db/connect";
 import usersTable from "../../../db/schema/Focus/user/user";
 import { and, eq, or } from "drizzle-orm";
@@ -6,7 +6,11 @@ import bcrypt from "bcryptjs";
 import { generateRandomToken } from "../../../lib/Tokens";
 import SignupQueue from "../../../Queues/SignupQueue";
 
-export default async function SignupHandler(req: Request, res: Response) {
+export default async function SignupHandler(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const {
     username,
     email,
@@ -99,8 +103,8 @@ export default async function SignupHandler(req: Request, res: Response) {
       });
     res.status(200).json({ message: "success" });
     return;
-  } catch (error: any) {
-    throw new Error(error);
-    res.status(500).json({ error });
+  } catch (error) {
+    console.log(`error while signing up: ${error}`);
+    next(error);
   }
 }

@@ -70,7 +70,7 @@ app.get("/status", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 }));
 app.use("/auth", auth_1.default);
-app.use((err, req, res, next) => {
+mainServer.use((err, req, res, next) => {
     console.error("Unhandled error:", err);
     res.status(500).json({ message: "Something went wrong!" });
 });
