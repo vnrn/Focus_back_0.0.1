@@ -1,4 +1,6 @@
+
 # Focus Backend
+![b58c42d5930fcec1934dfd38674d3a5e](https://github.com/user-attachments/assets/8f0c8bd1-7861-4c4b-943a-732b9be68522)
 
 **Focus Backend** is the server-side component of the Focus SaaS platform, built to efficiently handle user data, task tracking, real-time updates, and subscription management. Designed with scalability, security, and performance in mind, it provides a robust API for seamless integration with the frontend.
 
